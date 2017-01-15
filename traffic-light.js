@@ -4,8 +4,6 @@ function traffic_light(direction, status) {
   var light_type = ["red", "yellow", "green"];
   var _self = this;
 
-  var change_order_length = change_order.length;
-
   this.redToGreen = function () {
     if (this.status === "red") {
       this.status = light_type[2];
@@ -13,7 +11,6 @@ function traffic_light(direction, status) {
     } else {
       // console.log("error: the light status is not red");
     };
-
   };
 
   this.greenToYellow = function () {
@@ -35,6 +32,56 @@ function traffic_light(direction, status) {
   };
 };
 
+function nLRedToGreen() {
+  $('.traffic-light-n .bulb:nth-child(1)').removeClass("red");
+  $('.traffic-light-n .bulb:nth-child(3)').addClass("green");
+};
+function nLGreenToYellow() {
+  $('.traffic-light-n .bulb:nth-child(3)').removeClass("green");
+  $('.traffic-light-n .bulb:nth-child(2)').addClass("yellow");
+};
+function sLRedToGreen() {
+  $('.traffic-light-s .bulb:nth-child(1)').removeClass("red");
+  $('.traffic-light-s .bulb:nth-child(3)').addClass("green");
+};
+function sLGreenToYellow() {
+  $('.traffic-light-s .bulb:nth-child(3)').removeClass("green");
+  $('.traffic-light-s .bulb:nth-child(2)').addClass("yellow");
+};
+function wLGreenToYellow() {
+  $('.traffic-light-w .bulb:nth-child(3)').removeClass("green");
+  $('.traffic-light-w .bulb:nth-child(2)').addClass("yellow");
+};
+function wLYellowToRed() {
+  $('.traffic-light-w .bulb:nth-child(2)').removeClass("yellow");
+  $('.traffic-light-w .bulb:nth-child(1)').addClass("red");
+};
+
+function eLGreenToYellow() {
+  $('.traffic-light-e .bulb:nth-child(3)').removeClass("green");
+  $('.traffic-light-e .bulb:nth-child(2)').addClass("yellow");
+};
+function eLYellowToRed() {
+  $('.traffic-light-e .bulb:nth-child(2)').removeClass("yellow");
+  $('.traffic-light-e .bulb:nth-child(1)').addClass("red");
+};
+function nLYellowToRed() {
+  $('.traffic-light-n .bulb:nth-child(2)').removeClass("yellow");
+  $('.traffic-light-n .bulb:nth-child(1)').addClass("red");
+};
+function sLYellowToRed() {
+  $('.traffic-light-s .bulb:nth-child(2)').removeClass("yellow");
+  $('.traffic-light-s .bulb:nth-child(1)').addClass("red");
+};
+function wLRedToGreen() {
+  $('.traffic-light-w .bulb:nth-child(1)').removeClass("red");
+  $('.traffic-light-w .bulb:nth-child(3)').addClass("green");
+};
+function eLRedToGreen() {
+  $('.traffic-light-e .bulb:nth-child(1)').removeClass("red");
+  $('.traffic-light-e .bulb:nth-child(3)').addClass("green");
+};
+
 var change_order = [
   ["RGLightInt", 4000],     // 4 mins 30s
   ["YLightInt",   1000],    // 30 s
@@ -46,45 +93,33 @@ function trafficLightGroup(northLight, southLight, westLight, eastLight, change_
   setTimeout(function () {
     if (northLight.status === "red" && westLight.status === "green") {
       westLight.greenToYellow();
-      $('.traffic-light-w .bulb:nth-child(3)').removeClass("green");
-      $('.traffic-light-w .bulb:nth-child(2)').addClass("yellow");
+      wLGreenToYellow();
       eastLight.greenToYellow();
-      $('.traffic-light-e .bulb:nth-child(3)').removeClass("green");
-      $('.traffic-light-e .bulb:nth-child(2)').addClass("yellow");
+      eLGreenToYellow();
       console.log("-------------------")
     } else if (northLight.status === "red" && westLight.status === "yellow") {
       northLight.redToGreen();
-      $('.traffic-light-n .bulb:nth-child(1)').removeClass("red");
-      $('.traffic-light-n .bulb:nth-child(3)').addClass("green");
+      nLRedToGreen();
       southLight.redToGreen();
-      $('.traffic-light-s .bulb:nth-child(1)').removeClass("red");
-      $('.traffic-light-s .bulb:nth-child(3)').addClass("green");
+      sLRedToGreen();
       westLight.yellowToRed();
-      $('.traffic-light-w .bulb:nth-child(2)').removeClass("yellow");
-      $('.traffic-light-w .bulb:nth-child(1)').addClass("red");
+      wLYellowToRed();
       eastLight.yellowToRed();
-      $('.traffic-light-e .bulb:nth-child(2)').removeClass("yellow");
-      $('.traffic-light-e .bulb:nth-child(1)').addClass("red");
+      eLYellowToRed();
     } else if (northLight.status === "green" && westLight.status === "red") {
       northLight.greenToYellow();
-      $('.traffic-light-n .bulb:nth-child(3)').removeClass("green");
-      $('.traffic-light-n .bulb:nth-child(2)').addClass("yellow");
+      nLGreenToYellow();
       southLight.greenToYellow();
-      $('.traffic-light-s .bulb:nth-child(3)').removeClass("green");
-      $('.traffic-light-s .bulb:nth-child(2)').addClass("yellow");
+      sLGreenToYellow();
     } else if (northLight.status === "yellow" && westLight.status === "red") {
       northLight.yellowToRed();
-      $('.traffic-light-n .bulb:nth-child(2)').removeClass("yellow");
-      $('.traffic-light-n .bulb:nth-child(1)').addClass("red");
+      nLYellowToRed();
       southLight.yellowToRed();
-      $('.traffic-light-s .bulb:nth-child(2)').removeClass("yellow");
-      $('.traffic-light-s .bulb:nth-child(1)').addClass("red");
+      sLYellowToRed();
       westLight.redToGreen();
-      $('.traffic-light-w .bulb:nth-child(1)').removeClass("red");
-      $('.traffic-light-w .bulb:nth-child(3)').addClass("green");
+      wLRedToGreen();
       eastLight.redToGreen();
-      $('.traffic-light-e .bulb:nth-child(1)').removeClass("red");
-      $('.traffic-light-e .bulb:nth-child(3)').addClass("green");
+      eLRedToGreen();
     }
     console.log("N: " + northLight.status + " S: " + southLight.status
              + " W: " + westLight.status + " E: " + eastLight.status);
@@ -100,10 +135,5 @@ var westLight = new traffic_light("west", "green");
 var eastLight = new traffic_light("east", "green");
 
 trafficLightGroup(northLight, southLight, westLight, eastLight, change_order, change_order_length, change_order_index);
-
-
-
-
-
 
 
