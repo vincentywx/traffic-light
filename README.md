@@ -1,11 +1,11 @@
 # traffic-light
 
-#### 1 Introduction
+### 1 Introduction
 You are required to provide the code for an application that simulates a set of traffic lights at
 an intersection.
 
 The traffic lights are designated (N, S) and (E, W) like a compass.
-#### 2 Requirements
+### 2 Requirements
 When switching from green to red, the yellow light must be displayed for 30 seconds prior to
 it switching to red. The lights will change automatically every 5 minutes.
 
@@ -17,7 +17,7 @@ You must provide unit tests for all logic.
 Create a repo on bitbucket/github and provide the link as well as instructions on how to run.
 
 ### 3 How to use:
-##### 3.1 for the people who know the command line 
+#### 3.1 for the people who know the command line 
     $git clone https://github.com/vincentywx/traffic-light.git
     $cd traffic-light
     $node traffic-light.js
@@ -25,16 +25,20 @@ Create a repo on bitbucket/github and provide the link as well as instructions o
    How to install node?
     https://nodejs.org/en/download/package-manager/
     
-##### 3.2 for the people who don't know the command line 
-   open the link in the browser
+#### 3.2 for the people who don't know the command line 
+   1. open the link in the browser
    
-   https://github.com/vincentywx/traffic-light
+   2. https://github.com/vincentywx/traffic-light
    
-   download the repo. 
+   3. download the repo. 
    
-   open your download file.
+   4. open your download file.
    
-   open the index.html by your browser
+   5. open the index.html by your browser
+   
+   in order to save your time, I change the default as 4 seconds intersection for red to green or green to red, green to 
+   green to yellow interaction is 1 seconds. If you really want to change the intersection just like the requirement, open
+   the "traffic-light.js", find the variable "change_order", and change the seconds to what you want.
    
 ### 4 how do I do it.
  javascript object programming, build a object name "traffic_light",
