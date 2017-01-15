@@ -37,15 +37,12 @@ function traffic_light(direction, status) {
 
 var change_order = [
   ["RGLightInt", 4000],     // 4 mins 30s
-  ["YLightInt",   1000],  // 30 s
+  ["YLightInt",   1000],    // 30 s
 ];
 var change_order_length = change_order.length;
 var change_order_index = 0;
 
 function trafficLightGroup(northLight, southLight, westLight, eastLight, change_order, change_order_length, change_order_index) {
-  //var waiting_time = change_order[change_order_index % change_order_length][1];
-
-  console.log("1111");
   setTimeout(function () {
     if (northLight.status === "red" && westLight.status === "green") {
       westLight.greenToYellow();
@@ -97,13 +94,11 @@ function trafficLightGroup(northLight, southLight, westLight, eastLight, change_
 }
 
 
-
 var northLight = new traffic_light("north", "red");
 var southLight = new traffic_light("south", "red");
 var westLight = new traffic_light("west", "green");
 var eastLight = new traffic_light("east", "green");
 
-console.log("hello")
 trafficLightGroup(northLight, southLight, westLight, eastLight, change_order, change_order_length, change_order_index);
 
 
