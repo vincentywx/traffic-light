@@ -38,8 +38,8 @@ Create a repo on bitbucket/github and provide the link as well as instructions o
    
    6. could open google chrome inspect, console tag to see traffic light status. 
    
-   in order to save your time, I change the default intersection time as 4 seconds for red to green or green to red, green to 
-   yellow interaction is 1 second. If you really want to change the intersection just like the requirement, open
+   in order to save your time, I change the default interval time as 4 seconds for red to green or green to red, green to 
+   yellow interval is 1 second. If you really want to change the interval just like the requirement, open
    the "traffic-light.js", find the variable "change_order", and change the seconds to what you want.
    
 ### 4 how do I do it.
