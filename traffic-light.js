@@ -2,13 +2,13 @@ var async = require('async');
 
 function traffic_light(direction, status) {
   this.direction = direction;
-  var light_type = ["red", "yellow", "green"];
   this.status = status;
+  var light_type = ["red", "yellow", "green"];
   var _self = this;
 
   var change_order_length = change_order.length;
 
-  this.redToGreen = function (cb) {
+  this.redToGreen = function () {
     if (this.status === "red") {
       this.status = light_type[2];
       // console.log("success: the light status is " + this.status);
@@ -35,38 +35,24 @@ function traffic_light(direction, status) {
       // console.log("error: the light status is not yellow");
     };
   };
-
-  this.trafficLightLoop = function () {
-    console.log("------------");
-    console.log(this.status);
-    console.log(this);
-    console.log(_self);
-    console.log("------------");
-    setTimeout(function () {
-      if (_self.status === "red") {
-        _self.redToGreen();
-      } else if (_self.status === "green") {
-        _self.greenToYellow()
-      } else if (_self.status === "yellow") {
-        _self.yellowToRed()
-      }
-      _self.traffic_light_loop();
-    }, 3000);
-  };
-
 };
 
 var change_order = [
-  ["RedToGreen", 7000],     // 5 mins
-  ["GreenToYellow", 3000],  // 4 mins 30 s
-  ["YellowToRed", 7000]      // 30 seconds
+  ["RGLightInt", 4000],     // 5 mins
+  ["YLightInt", 1000],  // 4 mins 30 s
 ];
+var change_order_length = change_order.length;
+var change_order_index = 0;
 
-function trafficLightGroup(northLight, southLight, westLight, eastLight, change_order) {
+function trafficLightGroup(northLight, southLight, westLight, eastLight, change_order, change_order_length, change_order_index) {
+  //var waiting_time = change_order[change_order_index % change_order_length][1];
+
+  //console.log(waiting_time);
   setTimeout(function () {
     if (northLight.status === "red" && westLight.status === "green") {
       westLight.greenToYellow();
       eastLight.greenToYellow();
+      console.log("-------------------")
     } else if (northLight.status === "red" && westLight.status === "yellow") {
       northLight.redToGreen();
       southLight.redToGreen();
@@ -83,9 +69,9 @@ function trafficLightGroup(northLight, southLight, westLight, eastLight, change_
     }
     console.log("N: " + northLight.status + " S: " + southLight.status
              + " W: " + westLight.status + " E: " + eastLight.status);
-    trafficLightGroup(northLight, southLight, westLight, eastLight, change_order);
-  }, 3000);
-
+    change_order_index ++;
+    trafficLightGroup(northLight, southLight, westLight, eastLight, change_order, change_order_length, change_order_index);
+  }, change_order[change_order_index % change_order_length][1]);
 }
 
 
@@ -96,10 +82,7 @@ var westLight = new traffic_light("west", "green");
 var eastLight = new traffic_light("east", "green");
 
 
-//northLight.trafficLightLoop();
-
-
-trafficLightGroup(northLight, southLight, westLight, eastLight, change_order);
+trafficLightGroup(northLight, southLight, westLight, eastLight, change_order, change_order_length, change_order_index);
 
 
 
