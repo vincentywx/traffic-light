@@ -1,0 +1,116 @@
+
+.upLeft, .upMd, .upRight, .mdLeft, .mdMd, .mdRight, .downLeft, .downRight, .downLeft{
+	height: 200px;
+	position:relative;
+}
+
+.upLeft{
+	border-right: 4px solid #111;
+	border-bottom: 4px solid #111;
+}
+
+.upRight{
+	border-left: 4px solid #111;
+	border-bottom: 4px solid #111;
+}
+
+.downLeft{
+	border-top: 4px solid #111;
+	border-right:4px solid #111;
+}
+
+.downRight{
+	border-top: 4px solid #111;
+	border-left: 4px solid #111;
+}
+
+.traffic-lights .fa{
+	font-size:50px;
+	color:#2ae0d7;
+}
+
+.arrow-n, .arrow-s {
+	text-align:center;
+	vertical-align:middle;
+	line-height:200px;
+}
+
+.arrow-w, .arrow-e{
+	text-align:center;
+}
+
+.arrow-e{
+	margin-top:80px;
+}
+
+.mdLeft .fa, .mdRight .fa{
+	vertical-align:middle;
+}
+
+.traffic-light-n,
+.traffic-light-s{
+  position:absolute;
+  height: 150px;
+  width: 50px;
+  background-color: #333;
+  border-radius: 15px;
+  margin: 20px 0;
+  padding: 5px;
+}
+
+
+.traffic-light-w,
+.traffic-light-e {
+  position:absolute;
+  height: 50px;
+  width: 150px;
+  background-color: #333;
+  border-radius: 15px;
+  padding: 5px;
+}
+
+.traffic-light-n{
+	left:10px;
+}
+
+.traffic-light-s{
+	right:10px;
+}
+
+.traffic-light-w{
+	bottom:10px;
+	right:10px;
+}
+
+.traffic-light-e{
+	left:10px;
+	top:10px;
+}
+
+.bulb {
+  height: 30px;
+  width: 30px;
+  background-color: #111;
+  border-radius: 50%;
+  margin: 15px auto;
+  transition: background 500ms;
+}
+
+.traffic-light-w .bulb,
+.traffic-light-e .bulb{
+	display:inline-block;
+	margin:6px;
+
+}
+
+.bulb.red{
+	background-color:red;
+}
+
+.bulb.yellow{
+	background-color:yellow;
+}
+
+.bulb.green{
+	background-color:green;
+}
